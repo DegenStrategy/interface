@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Title Meta -->
+    <meta charset="utf-8" />
+    <title>DegenStrategy Platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta name="keywords" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <!-- Google Font Family link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Vendor css -->
+    <link href="assets/css/vendor.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Icons css -->
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- App css -->
+    <link href="assets/css/style.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Theme Config js -->
+    <script src="assets/js/config.js"></script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script src="js/ethers.js"></script>
+ <script src="https://unpkg.com/@metamask/detect-provider/dist/detect-provider.min.js"></script> 
+ <script type="text/javascript" src="https://unpkg.com/web3@1.6.0/dist/web3.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/web3modal@1.9.4/dist/index.js"></script>
+<script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.6.6/dist/umd/index.min.js"></script>
+<script type="text/javascript" src="js/walletlink.bundle.js"></script>
+ <script src="1config.js"></script> 
+  <style>.swal2-popup {
+  background: #1a1a1a !important; /* Dark background */
+  color: #ffffff !important; /* White text for contrast */
+  border: 1px solid #333 !important; /* Optional: subtle border */
+}
+
+/* Style the title */
+.swal2-title {
+  color: #ffffff !important; /* White title text */
+}
+/* Style the content text */
+.swal2-content {
+  color: #cccccc !important; /* Light gray for content text */
+}
+
+</style>
+</head>
+
+<body>
+
+    <!-- START Wrapper -->
+    <div class="app-wrapper">
+
+        <!-- Topbar Start -->
+        <header class="app-topbar">
+             <div class="container-fluid">
+                  <div class="navbar-header">
+                       <div class="d-flex align-items-center gap-2">
+                            <!-- Menu Toggle Button -->
+                           <div class="topbar-item">
+                                 <button type="button" class="button-toggle-menu topbar-button">
+                                      <iconify-icon icon="solar:hamburger-menu-outline"
+                                           class="fs-24 align-middle"></iconify-icon>
+                                 </button>
+                            </div>
+							
+       
+                            <!-- App Search-->
+                    
+                       </div>
+
+                       <div class="d-flex align-items-center gap-2">
+                            <!-- Theme Color (Light/Dark) -->
+                           <!-- <div class="topbar-item">
+                                 <button type="button" class="topbar-button" id="light-dark-mode">
+                                      <iconify-icon icon="solar:moon-outline"
+                                           class="fs-22 align-middle light-mode"></iconify-icon>
+                                      <iconify-icon icon="solar:sun-2-outline"
+                                           class="fs-22 align-middle dark-mode"></iconify-icon>
+                                 </button>
+                            </div>-->
+
+                            <!-- Notification -->
+                            <div class="dropdown topbar-item">
+                                <!-- <button type="button" class="topbar-button position-relative"
+                                      id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
+                                      aria-expanded="false">
+                                      <iconify-icon icon="solar:bell-bing-outline" class="fs-22 align-middle"></iconify-icon>
+                                      <span
+                                           class="position-absolute topbar-badge fs-10 translate-middle badge bg-danger rounded-pill">5<span
+                                                class="visually-hidden">unread messages</span></span>
+                                 </button>-->
+                                 <div class="dropdown-menu py-0 dropdown-lg dropdown-menu-end"
+                                      aria-labelledby="page-header-notifications-dropdown">
+                                     <!-- <div class="p-2 border-bottom bg-light bg-opacity-50">
+                                           <div class="row align-items-center">
+                                                <div class="col">
+                                                     <h6 class="m-0 fs-16 fw-semibold"> Notifications (5)</h6>
+                                                </div>
+                                                <div class="col-auto">
+                                                     <a href="javascript: void(0);" class="text-dark text-decoration-underline">
+                                                          <small>Clear All</small>
+                                                     </a>
+                                                </div>
+                                           </div>
+                                      </div>-->
+                                      <div data-simplebar style="max-height: 250px;">
+                                           <!-- Item -->
+                                           <a href="javascript:void(0);" class="dropdown-item p-2 border-bottom text-wrap">
+                                                <div class="d-flex">
+                                                     <div class="flex-shrink-0">
+                                                          <img src="img/profile100x100.png"
+                                                               class="img-fluid me-2 avatar-sm rounded-circle" alt="avatar-1" />
+                                                     </div>
+                                                     <div class="flex-grow-1">
+                                                          <p class="mb-0"><span class="fw-medium">Sally Bieber </span>started
+                                                               following you. Check out their profile!"</span></p>
+                                                     </div>
+                                                </div>
+                                           </a>
+                                           <!-- Item -->
+                                           <a href="javascript:void(0);" class="dropdown-item p-2 border-bottom">
+                                                <div class="d-flex">
+                                                     <div class="flex-shrink-0">
+                                                          <div class="avatar-sm me-2">
+                                                               <span
+                                                                    class="avatar-title text-bg-info fw-semibold fs-20 rounded-circle">
+                                                                    G
+                                                               </span>
+                                                          </div>
+                                                     </div>
+                                                     <div class="flex-grow-1">
+                                                          <p class="mb-0 fw-medium">Gloria Chambers</p>
+                                                          <p class="mb-0 text-wrap">
+                                                               mentioned you in a comment: '@admin, check this out!
+                                                          </p>
+                                                     </div>
+                                                </div>
+                                           </a>
+                                           <!-- Item -->
+                                           <a href="javascript:void(0);" class="dropdown-item p-2 border-bottom">
+                                                <div class="d-flex">
+                                                     <div class="flex-shrink-0">
+                                                          <img src="assets/images/users/avatar-3.jpg"
+                                                               class="img-fluid me-2 avatar-sm rounded-circle" alt="avatar-3" />
+                                                     </div>
+                                                     <div class="flex-grow-1">
+                                                          <p class="mb-0 fw-medium">Jacob Gines</p>
+                                                          <p class="mb-0 text-wrap">
+                                                               Answered to your comment on the cash flow forecast's graph 🔔.
+                                                          </p>
+                                                     </div>
+                                                </div>
+                                           </a>
+                                           <!-- Item -->
+                                           <a href="javascript:void(0);" class="dropdown-item p-2 border-bottom">
+                                                <div class="d-flex">
+                                                     <div class="flex-shrink-0">
+                                                          <div class="avatar-sm me-2">
+                                                               <span
+                                                                    class="avatar-title bg-soft-warning text-warning fs-20 rounded-circle">
+                                                                    <iconify-icon icon="solar:leaf-outline"></iconify-icon>
+                                                               </span>
+                                                          </div>
+                                                     </div>
+                                                     <div class="flex-grow-1">
+                                                          <p class="mb-0 fw-medium text-wrap">A new system update is available.
+                                                               Update now for the latest features.</p>
+                                                     </div>
+                                                </div>
+                                           </a>
+                                           <!-- Item -->
+                                           <a href="javascript:void(0);" class="dropdown-item p-2 border-bottom">
+                                                <div class="d-flex">
+                                                     <div class="flex-shrink-0">
+                                                          <img src="assets/images/users/avatar-5.jpg"
+                                                               class="img-fluid me-2 avatar-sm rounded-circle" alt="avatar-5" />
+                                                     </div>
+                                                     <div class="flex-grow-1">
+                                                          <p class="mb-0 fw-medium">Shawn Bunch</p>
+                                                          <p class="mb-0 text-wrap">
+                                                               commented on your post: 'Great photo!
+                                                          </p>
+                                                     </div>
+                                                </div>
+                                           </a>
+                                      </div>
+                                      <div class="text-center p-2">
+                                           <a href="javascript:void(0);" class="btn btn-primary btn-sm">View All Notification <i
+                                                     class="bx bx-right-arrow-alt ms-1"></i></a>
+                                      </div>
+                                 </div>
+                            </div>
+
+                            <!-- User -->
+                            <div class="dropdown topbar-item">
+                                 <a type="button" class="topbar-button" id="page-header-user-dropdown" data-bs-toggle="dropdown"
+                                      aria-haspopup="true" aria-expanded="false">
+                                      <span class="d-flex align-items-center" id="userSettings">
+                                           <img class="rounded-circle" width="32" src="img/profile100x100.png"
+                                                alt="avatar-3">
+                                      </span>
+                                 </a>
+                                 <div class="dropdown-menu dropdown-menu-end">
+                                      <!-- item-->
+                                   
+                                 </div>
+                            </div>
+                       </div>
+                  </div>
+             </div>
+        </header>
+        <!-- Topbar End -->
+
+        <!-- App Menu Start -->
+        <div class="app-sidebar">
+             <!-- Sidebar Logo -->
+             <div class="logo-box">
+               <!-- <a href="index.html" class="logo-dark">
+                       <img src="assets/images/logo-sm.png" class="logo-sm" alt="logo sm">
+                       <img src="assets/images/logo2.png" class="logo-lg" alt="logo dark">
+                  </a>
+
+                  <a href="index.html" class="logo-light">
+                       <img src="assets/images/logo-sm.png" class="logo-sm" alt="logo sm">
+                        <img src="assets/images/logo2.png" style="max-width:200px">
+                  </a>
+				--><img src="assets/images/logo2.png" style="max-width:200px">
+             </div>
+
+             <div class="scrollbar" id="sidebor" data-simplebar>
+
+                 
+             </div>
+        </div>
+
+
+        <div class="animated-stars">
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+        </div>
+        <!-- App Menu End -->
+
+        <!-- ==================================================== -->
+        <!-- Start right Content here -->
+        <!-- ==================================================== -->
+        <div class="page-content">
+
+            <!-- Start Container Fluid -->
+            <div class="container-fluid">
+
+                <!-- ========== Page Title Start ========== -->
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                       
+                        </div>
+                    </div>
+                </div>
+                <!-- ========== Page Title End ========== -->
+
+<div class="main-panel">
+        <div class="content-wrapper">
+
+
+           
+    
+
+		  <div class="row justify-content-center">
+		  
+		  	  
+		  <div class="row justify-content-center">
+		 <center>  <div class="col-md-6 grid-margin stretch-card" style="max-width:750px">
+              <div class="card">
+                <div class="card-body">
+            	<center>      <h4 class="card-title">Available Actions</h4>	</center>
+		
+
+				
+
+       
+                
+                    <div class="form-group">
+			
+						
+						<div id="display-votingPower">
+       
+					  
+					  
+					  </div>
+                    </div>
+		<center>
+               <button onclick="rebalance()" class="btn btn-light mr-2">Rebalance Rewards</button></br></br>
+			       <button onclick="harvestVaults()" class="btn btn-light mr-2">Harvest Rewards From Vaults</button> &nbsp
+				   
+				   
+				          <button onclick="harvestVaultIndividual()" class="btn btn-light sm-2">Harvest Individual vault</button></br></br>
+				   
+			 <button onclick="buybek()" class="btn btn-light mr-2">Buy-Back OINK & Create Reserves</button> 
+                 <!--   <button onclick="rebalanceVaults()" class="btn btn-light mr-2">Rebalance Vaults</button>      -->
+				</center>
+						
+               
+			   
+                </div>
+              </div>
+            </div>
+		</center>
+		  </div>
+		  
+		  
+		  
+		    <div class="row justify-content-center">
+		   <div class="col-md-6 grid-margin stretch-card" style="max-width:750px">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Set Reward Allocation for Pulse Ecosystem  </h4>
+		
+            
+                
+                    <div class="form-group">
+					    <label for="exampleFormControlSelect2">Select Pool</label>&nbsp;&nbsp;<!--<div class="badge badge-info" style="display:inline; cursor:pointer;" onclick="rebalancePools()">Rebalance Pools</div>-->
+					<div id="show-options">
+             
+					</div>	 
+ 
+					    <br>
+						
+						
+                      <label for="exampleInputUsername1">New Allocation (in %):</label>
+                      <input type="text" class="form-control" id="poolAllocation" placeholder="Allocation(eg. 2.1 to allocate 2.1%)">
+					    <br>
+						
+						 
+					  <label for="exampleInputUsername1">Your commitment(in OINK)</label>
+                      <input type="text" class="form-control" id="poolAllocation-commit" placeholder="Number of tokens(eg. 5000)">
+					  
+					  <br>
+					  <label for="formControlRange"><i id="delayInfo" class="mdi mdi-information-outline" onclick="displayDelayInfo()">  </i> Delay:  <span id="client">0</span> Hours</label>
+        <input type="range" class="form-control-range" id="formControlRange" style="max-width:300px;" value="0">
+		
+                    </div>
+                   
+                    <button type="submit" id="btn-poolAllocation" class="btn btn-primary mr-2">Submit</button><br><br>
+				
+               
+			  
+                </div>
+              </div>
+            </div>
+			   <div class="col-md-6 grid-margin stretch-card" style="max-width:750px">
+			<div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Proposals: Pool &amp; Farm Allocations <!--<i class="fa fa-refresh fa-lg" onclick="refreshPoolAllocation()" style="cursor: pointer;"></i>  -->                                                      
+				<br><br>   <div class="badge badge-outline-danger" style="display:inline; float: right; cursor: pointer;" id="poolAllocation-expired" onclick="poolAllocationShowExpired()">Expired</div>
+				  <div class="badge badge-success" style="display:inline; float: right; margin-right: 7px" id="poolAllocation-active" onclick="poolAllocationShowActive()">Active</div>
+				 <br>
+				  </h4>
+   
+		
+   
+   
+                    <div class="table-responsive" style="max-height:500px;display:block;" id="poolAllocationTable"></div>
+                </div>
+              </div>
+		  </div>
+		  </div>
+		  
+		  
+		 
+		  
+		  
+		  
+		    <div class="row justify-content-center">
+		   <div class="col-md-6 grid-margin stretch-card" style="max-width:750px">
+              <div class="card">
+                <div class="card-body">
+                 <h4 class="card-title">Set Roll-Over Bonuses <small>(Current: <span id="current-bonuses">0.5%, 1.5%, 2%, 2.5%, 3%1%</span>)</small></h4>
+		
+                  <p class="card-description">
+                   After miner matures, users can pay themself a bonus for extending or rolling-over their miner. 
+                  </p>
+                
+                    <div class="form-group">
+                      <label for="exampleInputUsername1">Roll-over Bonuses</label>
+					  
+					  <div class="form-group row">
+				     <div class="col">
+                    <select class="form-control" id="select-pool">
+			<option value="1">1 Month Miner (Current: 0.5%)</option>
+                      <option value="2">3 Month Deposit (Current: 1.5%)</option>
+                   
+                      <option value="4">1 Year Deposit (Current: 2.5%)</option>
+        
+					  <option value="6">10 Year Deposit (Current: 1%)</option>
+		   </select>
+					</div>
+					  <div class="col">
+					     <input type="text" class="form-control" id="rollOverBonus" placeholder="New roll-over Bonus (in %)">
+					  </div>
+					  </div>
+					  
+					 
+					  
+
+					  <label for="exampleInputUsername1">Your commitment(in DEGEN)</label>
+                      <input type="text" class="form-control" id="rollOverBonus-commit" placeholder="Number of tokens(eg. 5000)">
+					  
+					    <br>
+					  <label for="formControlRange2"><i id="delayInfo3" class="mdi mdi-information-outline" onclick="displayDelayInfo()">  </i> Delay:  <span id="client2">0</span> Hours</label>
+        <input type="range" class="form-control-range" id="formControlRange2" style="max-width:300px;" value="0">
+                    </div>
+                   
+                    <button type="submit" id="btn-rollOverBonus" class="btn btn-primary mr-2">Submit</button><br><br>
+				
+            
+                </div>
+              </div>
+            </div>
+			
+			
+			
+			
+			   <div class="col-md-6 grid-margin stretch-card" style="max-width:750px">
+			<div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Proposals: Roll Over Bonuses   <i class="fa fa-refresh fa-lg" onclick="refreshRollOverBonus()" style="cursor: pointer;"></i>                                                     
+			<br><br>	   <div class="badge badge-outline-danger" style="display:inline; float: right; cursor: pointer;" id="rollOverBonus-expired" onclick="rollOverBonusShowExpired()">Expired</div>
+				  <div class="badge badge-success" style="display:inline; float: right; margin-right: 7px" id="rollOverBonus-active" onclick="rollOverBonusShowActive()">Active</div>
+				 
+				  </h4>
+   
+		
+   
+   
+                    <div class="table-responsive" style="max-height:250px;display:block;" id="rollOverBonusTable"></div>
+                </div>
+              </div>
+		  </div>
+		  </div>
+		  
+		  
+	<div class="row justify-content-center">
+		   <div class="col-md-6 grid-margin stretch-card" style="max-width:750px">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Set Transaction Tax</h4>
+		
+	
+ 
+                
+                    <div class="form-group">
+			
+						<br>
+						
+					<label for="exampleInputUsername1"> Current Transaction Tax: <div id="governor-tax" style="display: inline;"></div>  %</label>
+						
+						<br>
+					  <label for="formControlRange9">New Tax:  <span id="client9">0</span> %</label>
+        <input type="range" class="form-control-range" id="formControlRange9" style="max-width:75%;" value="0">
+		
+		<br>
+						
+						<label for="exampleInputUsername1">Your commitment(in OINK)</label>
+						
+					<input type="text" class="form-control" id="transactionTax-commit" placeholder="Number of tokens(eg. 50 000)">
+					
+					
+					<br>
+					  <label for="formControlRange3"><i id="delayInfo" class="mdi mdi-information-outline" onclick="displayDelayInfo()">  </i> Delay:  <span id="client3">0</span> Hours</label>
+        <input type="range" class="form-control-range" id="formControlRange3" style="max-width:300px;" value="0">
+						<br>
+						<button onclick="requestGovernorTax();" id="btn-treasuryWithdraw" class="btn btn-primary mr-2">Submit</button>
+						
+						
+             
+					</div>
+                   
+ 
+               
+			   
+                </div>
+              </div>
+            </div>
+			   <div class="col-md-6 grid-margin stretch-card" style="max-width:750px">
+			<div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Transaction Tax Proposals                           <i class="fa fa-refresh fa-lg" onclick="refreshGovTax()" style="cursor: pointer;"></i>                                           
+		 <div class="badge badge-outline-danger" style="display:inline; float: right; cursor: pointer;" id="tokenTax-expired" onclick="showExpired4()">Expired</div>
+				  <div class="badge badge-success" style="display:inline; float: right; margin-right: 7px" id="tokenTax-active" onclick="showActive4()">Active</div>
+				 
+				  </h4>
+   
+		
+   
+   
+                    <div class="table-responsive" style="max-height:500px;display:block;" id="govTaxTable"></div>
+             
+               
+             
+              </div>
+   
+ 
+                </div>
+              </div>
+		 
+		  
+		  
+		  
+		  
+		 
+		  
+		  
+		  
+		 
+		  
+		  
+          
+        </div>
+		
+		
+		
+		<div class="row justify-content-center">
+		   <div class="col-md-6 grid-margin stretch-card" style="max-width:750px">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Change Emissions (Rewards Issued With Every Block) (Current: <span id="rewardPerBlock"></span>)</h4>
+		
+	
+ 
+                <div class="alert alert-fill-primary" role="alert">
+		Adjust reward issued with every block.
+		</div>
+                
+                    <div class="form-group">
+			
+					
+						
+							<label for="exampleInputUsername1">New Reward Amount (Per Block):</label>
+						
+						<input type="text" class="form-control" id="tokenAmount" placeholder="Tokens Per Block">
+					
+						<br>
+						
+						<label for="exampleInputUsername1">Your commitment(in OINK)</label>
+						
+					<input type="text" class="form-control" id="treasuryWithdraw-commit2" placeholder="Number of tokens(eg. 50 000)">
+					
+					
+					<br>
+					  <label for="formControlRange"><i id="delayInfo" class="mdi mdi-information-outline" onclick="displayDelayInfo()">  </i> Delay:  <span id="client10">0</span> Hours</label>
+        <input type="range" class="form-control-range" id="formControlRange10" style="max-width:300px;" value="0">
+						<br>
+						<button type="submit" onclick="emissionsProposal()" class="btn btn-primary mr-2">Submit</button>
+						
+						
+             
+					</div>
+                   
+ 
+               
+			   
+                </div>
+              </div>
+            </div>
+			   <div class="col-md-6 grid-margin stretch-card" style="max-width:750px">
+			<div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Emission Proposals                  <i class="fa fa-refresh fa-lg" onclick="refreshTokenBurn()" style="cursor: pointer;"></i>                                      
+		 <div class="badge badge-outline-danger" style="display:inline; float: right; cursor: pointer;" id="emissions-expired" onclick="showExpired5()">Expired</div>
+				  <div class="badge badge-success" style="display:inline; float: right; margin-right: 7px" id="emissions-active" onclick="showActive5()">Active</div>
+				 
+				  </h4>
+   
+		
+   
+   
+                    <div class="table-responsive" style="max-height:500px;display:block;" id="tokenBurnTable">  </div>
+             
+               
+             
+              </div>
+   
+ 
+                </div>
+              </div>
+		 
+		  
+		  
+		  
+		  
+		 
+		  
+		  
+		  
+		 
+		  
+		  
+          
+        </div>
+		
+		
+		
+		
+		
+		<div class="row justify-content-center">
+		   <div class="col-md-6 grid-margin stretch-card" style="max-width:750px">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Request withdraw from treasury wallet</h4>
+		
+	
+ 
+                <div class="alert alert-fill-primary" role="alert">
+		The treasury wallet can be controlled through the governance process. To initiate the transfer, user must vote and commit tokens. Once the proposal passes, it requires a further approval through share voting before the process is finalized and tokens withdrawn.
+	</div>
+            
+
+
+		
+                    <div class="form-group">
+			
+						<br>
+						
+						<label for="exampleInputUsername1">Token to Transfer:</label>
+						   <select class="form-control" id="tokenContractAddress" onchange="changeFunc(value);">
+					 <option value="0xCb761FA439169684b6703669922Ae56d83e1Ce84">DegenStrategy(DEGEN) Token</option>
+	 <option value="0x0000000000000000000000000000000000001010">PulseChain(PLS) Token</option>
+	  <option value="0x95B303987A60C71504D99Aa1b13B4DA07b0790ab">PulseX(PLSX) Token</option>
+	   <option value="0x2fa878Ab3F87CC1C9737Fc071108F904c0B0C95d">Incentive(INC) Token</option>
+<option value="other">Other (custom input)</option>
+
+					</select>
+<div id="dependOnOption" style="display: none;">
+<br><input type="text" class="form-control" id="tCa" placeholder="Enter Token Contract Address"></div>
+						<br>
+						
+							<label for="exampleInputUsername1">Send to Wallet: <select class="form-control" style="display: inline;" id="sendToWalletInput" onchange="changeFunc2(value);">
+					 <option value="custom">Custom Wallet Address</option>
+	<!-- <option value="">Buy-Back Contract</option>
+	  <option value="">PLSX-INC Farming</option>
+  <option value="">Treasury Miner (5 Years)</option>-->
+					</select></label>
+						
+						<input type="text" class="form-control" id="recipientAddress" placeholder="Enter Recipient Wallet Address">
+						<br>
+						
+							<label for="exampleInputUsername1">Amount to Send:</label>
+						
+						<input type="text" class="form-control" id="tokenAmount3" placeholder="Amount of tokens">
+						<br>
+						
+						<label for="exampleInputUsername1">Your commitment(in OINK)</label>
+						
+					<input type="text" class="form-control" id="treasuryWithdraw-commit" placeholder="Number of tokens(eg. 69420)">
+						<br>
+					  <label for="formControlRange4"><i id="delayInfo" class="mdi mdi-information-outline" onclick="displayDelayInfo()">  </i> Delay:  <span id="client4">0</span> Hours</label>
+        <input type="range" class="form-control-range" id="formControlRange4" style="max-width:300px;" value="0">
+		
+		<br>
+					
+					
+					
+						<button onclick="requestTreasuryWithdraw()" id="btn-treasuryWithdraw" class="btn btn-primary mr-2">Submit</button>
+						
+						
+             
+					</div>
+                   
+ 
+               
+			   
+                </div>
+              </div>
+            </div>
+			   <div class="col-md-6 grid-margin stretch-card" style="max-width:750px">
+			<div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Treasury Withdraw Proposals                              <i class="fa fa-refresh fa-lg" onclick="refreshTreasuryTransfer()" style="cursor: pointer;"></i>                                        
+		 <br><br><div class="badge badge-outline-danger" style="display:inline; float: right; cursor: pointer;" id="treasuryTransfer-expired" onclick="showExpired3()">Expired</div>
+				  <div class="badge badge-success" style="display:inline; float: right; margin-right: 7px" id="treasuryTransfer-active" onclick="showActive3()">Active</div>
+				 <br>
+				  </h4>
+   
+		
+   
+   
+                    <div class="table-responsive" style="max-height:500px;display:block;" id="treasuryTransferTable"> </div>
+             
+               
+             
+              </div>
+   
+ 
+                </div>
+              </div>
+		 
+		  
+		  
+		  
+		  
+		 
+		  
+		  
+		  
+		 
+		  
+		  
+          
+        </div>
+		
+		
+		
+		<div class="row justify-content-center">
+		   <div class="col-md-6 grid-margin stretch-card" style="max-width:750px">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Allocate Rewards Towards a New Token</h4>
+		
+	
+ 
+                
+                    <div class="form-group">
+			
+						<br>
+						
+						
+						
+		<div id="dependOnOption">
+						
+							<label for="exampleInputUsername1">Contract Address:</label>
+						
+						<input type="text" class="form-control" id="tokenAmount2" placeholder="Contract Address That Will Distribute Rewards">
+						</div>
+						<br>
+						
+						<label for="exampleInputUsername1">Your commitment(in OINK)</label>
+						
+					<input type="text" class="form-control" id="addToken-commit" placeholder="Number of tokens(eg. 50 000)">
+					
+					
+					<br>
+					  <label for="formControlRange5"><i id="delayInfo" class="mdi mdi-information-outline" onclick="displayDelayInfo()">  </i> Delay:  <span id="client5">0</span> Hours</label>
+        <input type="range" class="form-control-range" id="formControlRange5" style="max-width:300px;" value="0">
+						<br>
+						<button type="submit" id="btn-addToken" class="btn btn-primary mr-2">Submit</button>
+						
+						
+             
+					</div>
+                   
+ 
+               
+			   
+                </div>
+              </div>
+            </div>
+			   <div class="col-md-6 grid-margin stretch-card" style="max-width:750px">
+			<div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">New Token Reward Eligibility Proposals                  <i class="fa fa-refresh fa-lg" onclick="refreshAddToken()" style="cursor: pointer;"></i>                                      
+		 <div class="badge badge-outline-danger" style="display:inline; float: right; cursor: pointer;" id="addToken-expired" onclick="showExpired2()">Expired</div>
+				  <div class="badge badge-success" style="display:inline; float: right; margin-right: 7px" id="addToken-active" onclick="showActive2()">Active</div>
+				 
+				  </h4>
+   
+		
+   
+   
+                    <div class="table-responsive" style="max-height:500px;display:block;" id="addTokenTable"></div>
+             
+               
+             
+              </div>
+   
+ 
+                </div>
+              </div>
+		 
+		  
+		  
+		  
+		  
+		 
+		  
+		  
+		  
+		 
+		  
+		  
+          
+        </div>
+		
+		 
+		   <div class="row justify-content-center">
+		   
+		   
+		   
+		     <div class="col-md-6 grid-margin stretch-card" style="max-width:750px">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Set Mining-Associated Fees </h4>
+		
+                  <p class="card-description">
+                    DAO can set deposit fees on Pulse-Ecosystem mining rewards.<br>
+					
+						Fees are sent to the treasury wallet that is collectively controlled by long term miners and the senate.
+					
+					<br><br>Deposit fee is charged once when the user begins mining. Maximum possible deposit fee is 5%.<br>
+					Mining Fee is charged perpetually(every hour). Maximum possible mining fee is 0.025% hourly<br>
+					If user has been referred, both the referral and invitee can mint the Referral Bonus (paid from inflation).<br>
+					
+                  </p>
+                
+				
+				
+                      <div class="form-group">
+					  
+					  	    
+                    <select class="form-control" id="select-mining-fee" style="max-width:420px">
+			 <option disabled="" selected="">Choose Fee Type</option>
+                      <option value="0">Deposit Fee (Current: 0%)</option>
+                      <option value="1">Funding Rate (Current: 0.025%)</option>
+					   <option value="2">Referral Bonus (Current: 5%)</option>
+					 
+		   </select>
+				
+					
+					<br>
+                      <label for="exampleInputUsername1">New Fee:</label>
+                      <input type="text" class="form-control" id="miningFee" placeholder="New Fee (in %)">
+					  <br>
+					  <label for="exampleInputUsername1">Your commitment(in DEGEN)</label>
+                      <input type="text" class="form-control" id="miningFee-commit" placeholder="Number of tokens(eg. 5000)">
+					  
+					  
+					    <br>
+					  <label for="formControlRange6"><i id="delayInfo5" class="mdi mdi-information-outline" onclick="displayDelayInfo()">  </i> Delay:  <span id="client6">0</span> Hours</label>
+        <input type="range" class="form-control-range" id="formControlRange6" style="max-width:300px;" value="0">
+		
+                    </div>
+					
+                   
+                    <button type="submit" id="btn-miningFee" class="btn btn-primary mr-2">Submit</button><br><br>
+				
+               
+
+                </div>
+              </div>
+            </div>
+		   
+		   
+			   <div class="col-md-6 grid-margin stretch-card" style="max-width:750px">
+			<div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Proposals: Mining Fees <i class="fa fa-refresh fa-lg" onclick="refreshMiningFee()" style="cursor: pointer;"></i>                                                        
+				   <div class="badge badge-outline-danger" style="display:inline; float: right; cursor: pointer;" id="miningFee-expired" onclick="miningFeeShowExpired()">Expired</div>
+				  <div class="badge badge-success" style="display:inline; float: right; margin-right: 7px" id="miningFee-active" onclick="miningFeeShowActive()">Active</div>
+				 
+				  </h4>
+   
+		
+   
+   
+                    <div class="table-responsive" style="display:block;" id="miningFeeTable"></div>
+                </div>
+              </div>
+		  </div>
+		<div class = "row justify-content-center">
+		  
+		    <div class="col-md-6 grid-margin stretch-card" style="max-width:750px">
+              <div class="card">
+                <div class="card-body">
+                  
+				     <h4 class="card-title">Set Minimum Cost To Vote <small>(Current: <div id="minCostToVote" style="display:inline;">100</div> DEGEN)</small></h4>
+					 
+                  <p class="card-description">
+                    Every proposal has to be manually reviewed and rejected by other users if need be. Minimum cost to vote prevents spam entries, but at the same time it should allow for affordable voting.
+                  </p>
+                
+                    <div class="form-group">
+                      <label for="exampleInputUsername1">New Minimum Cost To vote:</label>
+                      <input type="text" class="form-control" id="costToVote" placeholder="Number of tokens(eg. 1000)">
+					    <br>
+					  <label for="exampleInputUsername1">Your commitment(in DEGEN)</label>
+                      <input type="text" class="form-control" id="costToVote-commit" placeholder="Number of tokens(eg. 5000)">
+					  <br>
+					  <label for="formControlRange7"><i id="delayInfo" class="mdi mdi-information-outline" onclick="displayDelayInfo()">  </i> Delay:  <span id="client7">0</span> Hours</label>
+        <input type="range" class="form-control-range" id="formControlRange7" style="max-width:300px;" value="0">
+    
+	  
+                    </div>
+					
+                   
+                    <button type="submit" id="btn-costToVote" class="btn btn-primary mr-2">Submit</button><br><br>
+				
+               
+
+                </div>
+              </div>
+            </div>
+			   <div class="col-md-6 grid-margin stretch-card" style="max-width:750px">
+			<div class="card">
+                <div class="card-body">
+				
+                  <h4 class="card-title">Proposals: Cost To Vote <i class="fa fa-refresh fa-lg" onclick="refreshCostToVote()" style="cursor: pointer;"></i>                                              
+				   <div class="badge badge-outline-danger" style="display:inline; float: right; cursor: pointer;" id="costToVote-expired" onclick="showExpired()">Expired</div>
+				  <div class="badge badge-success" style="display:inline; float: right; margin-right: 7px" id="costToVote-active" onclick="showActive()">Active</div>
+				 
+				  </h4>
+   
+		
+   
+   
+                    <div class="table-responsive" style="max-height:500px;display:block;" id="costToVoteTable"></div>
+                </div>
+              </div>
+		  </div>
+		  </div>
+		  
+		  
+		  
+		  
+		  
+		    <div class="row justify-content-center">
+		   <div class="col-md-6 grid-margin stretch-card" style="max-width:750px">
+              <div class="card">
+                <div class="card-body">
+                 <h4 class="card-title">Set Delay Before Enforce <small>(Current: <div style="display: inline" id="current-delay"><span id="delayBeforeEnforceValue" style="display:inline;">24</span>Hours[1.0 Days]</div>)</small></h4>
+		
+                  <p class="card-description">
+                    To update settings, users submit proposals. The "Delay before enforce" is a period of time during which the proposals can be voted against(rejected). Once this period expires, the proposal is accepted and the changed setting enforced.
+                  </p>
+                
+                    <div class="form-group">
+                      <label for="exampleInputUsername1">New Delay Before Enforce:</label>
+                      <input type="text" class="form-control" id="delayBeforeEnforce" placeholder="Enter the number for new Delay (in Hours)">
+					  <br>
+					  <label for="exampleInputUsername1">Your commitment(in DEGEN)</label>
+                      <input type="text" class="form-control" id="delayBeforeEnforce-commit" placeholder="Number of tokens(eg. 5000)">
+					  
+					  <br>
+					  <label for="formControlRange8"><i id="delayInfo2" class="mdi mdi-information-outline" onclick="displayDelayInfo()">  </i> Delay:  <span id="client8">0</span> Hours</label>
+        <input type="range" class="form-control-range" id="formControlRange8" style="max-width:300px;" value="0">
+		
+		
+                    </div>
+                   
+                    <button type="submit" id="btn-delayBeforeEnforce" class="btn btn-primary mr-2">Submit</button><br><br>
+				
+               
+			
+                </div>
+              </div>
+            </div>
+			   <div class="col-md-6 grid-margin stretch-card" style="max-width:750px">
+			<div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Proposals: Delay Before Enforce <i class="fa fa-refresh fa-lg" onclick="refreshDelayBeforeEnforce()" style="cursor: pointer;"></i>                                                     
+				<br><br>   <div class="badge badge-outline-danger" style="display:inline; float: right; cursor: pointer;" id="delayBeforeEnforce-expired" onclick="delayShowExpired()">Expired</div>
+				  <div class="badge badge-success" style="display:inline; float: right; margin-right: 7px" id="delayBeforeEnforce-active" onclick="delayShowActive()">Active</div>
+				 
+				  </h4>
+   
+		
+   
+   
+                    <div class="table-responsive" style="max-height:250px;display:block;" id="delayBeforeEnforceTable"></div>
+                </div>
+              </div>
+		  </div>
+		  </div>
+		  
+		  
+		  <div class="row justify-content-center">
+		   <div class="col-md-6 grid-margin stretch-card" style="max-width:750px; min-height:400px;">
+              <div class="card">
+                <div class="card-body "><center>
+                  <h4 class="card-title">Vote for proposals using Miners</h4>
+		
+
+				    <div class="table-responsive" style="max-height:250px;display:block;">
+ 
+
+  
+  </div>
+   <!--<label for="exampleInputUsername1">Active Proposals</label>
+				    <div class="table-responsive" style="max-height:250px;display:block;">
+					 
+					 
+					 <div class="alert alert-fill-info" role="alert">Currently there are no active voting proposals.</div>
+					 <!-- 
+					if consensus proposal gets pushed,...
+					 include 'proposals/proposeGovernor.html';
+					 
+					
+		
+                  </div> --> 
+       
+                
+                    <div class="form-group">
+			
+						
+						<div id="display-votingPower">
+       
+					  
+					  
+					  </div>
+                    </div>
+		
+               <button onclick="voteMiner()" class="btn btn-light mr-2">Vote For Proposal</button>
+                    <button id="btn-checkVotingPower" onclick="checkVotingPower()" class="btn btn-light mr-2">Check My Effective Voting Power</button>      
+				
+						
+               
+			   </center>
+                </div>
+              </div>
+            </div>
+			   <div class="col-md-6 grid-margin stretch-card" style="max-width:750px">
+			<div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Miner Voting                                                      
+		
+				  </h4>
+
+		<div class="row justify-content-center">
+                <div class="col-12 col-sm-6 col-md-6 col-xl-4 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">1 Month Miner</h4>
+                      <div class="d-flex justify-content-between">
+                        <p class="text-muted">Voting Power:</p>
+                        <p class="text-muted">20%</p>
+                      </div>
+                      <div class="progress progress-md">
+                        <div class="progress-bar bg-info" style="width: 13.3%;" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+				
+				<div class="col-12 col-sm-6 col-md-6 col-xl-4 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">3 Month Miner</h4>
+                      <div class="d-flex justify-content-between">
+                        <p class="text-muted">Voting Power:</p>
+                        <p class="text-muted">30%</p>
+                      </div>
+                      <div class="progress progress-md">
+                        <div class="progress-bar bg-info" style="width: 22%;" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+				
+	
+				   </div>
+					<div class="row justify-content-center">
+				<div class="col-12 col-sm-6 col-md-6 col-xl-4 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">1 Year Miner</h4>
+                      <div class="d-flex justify-content-between">
+                     <p class="text-muted">Voting Power:</p>
+                        <p class="text-muted">60%</p>
+                      </div>
+                      <div class="progress progress-md">
+                       <div class="progress-bar bg-info" style="width: 50%;" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+				
+				
+				<div class="col-12 col-sm-6 col-md-6 col-xl-4 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">10 Year Miner</h4>
+                      <div class="d-flex justify-content-between">
+                      <p class="text-muted">Voting Power:</p>
+                        <p class="text-muted">150%</p>
+                      </div>
+                      <div class="progress progress-md">
+                        <div class="progress-bar bg-info" style="width: 100%;" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+             
+               
+             
+              </div>
+   
+ 
+                </div>
+              </div>
+		  </div>
+		  </div>
+		  
+		  
+		  
+	
+		  
+		  
+		  <div class="content-wrapper">
+
+
+           
+    
+
+		
+		  
+		  
+		  </div>
+		  
+		    
+		  
+		  
+		  
+		 
+		  
+		  
+          
+        
+		  </div>
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+          
+        </div>
+	
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+   
+        <!-- partial -->
+      </div>
+
+
+
+              
+
+            </div>
+            <!-- End Container Fluid -->
+
+            <!-- Footer Start -->
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="col-12 text-center">
+                            <script>document.write(new Date().getFullYear())</script> &copy; DegenStrategy</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- Footer End -->
+
+        </div>
+        <!-- ==================================================== -->
+        <!-- End Page Content -->
+        <!-- ==================================================== -->
+
+    </div>
+    <!-- END Wrapper -->
+
+    <!-- Vendor Javascript -->
+    <script src="assets/js/vendor.min.js"></script>
+
+    <!-- App Javascript -->
+    <script src="assets/js/app.js"></script>
+
+    <!-- Vector Map Js -->
+    <script src="assets/vendor/jsvectormap/js/jsvectormap.min.js"></script>
+    <script src="assets/vendor/jsvectormap/maps/world-merc.js"></script>
+    <script src="assets/vendor/jsvectormap/maps/world.js"></script>
+
+    <!-- Dashboard Js -->
+    <script src="assets/js/pages/dashboard.js"></script>
+	
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/userProfile.js"></script>
+  
+
+    <script src="js/govern.js"></script>
+   <script src="js/confetti.js"></script>
+ 
+
+</body>
+
+</html>

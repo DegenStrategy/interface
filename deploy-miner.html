@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Title Meta -->
+    <meta charset="utf-8" />
+    <title>DegenStrategy Platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta name="keywords" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <!-- Google Font Family link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Vendor css -->
+    <link href="assets/css/vendor.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Icons css -->
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- App css -->
+    <link href="assets/css/style.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Theme Config js -->
+    <script src="assets/js/config.js"></script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script src="js/ethers.js"></script>
+ <script src="https://unpkg.com/@metamask/detect-provider/dist/detect-provider.min.js"></script> 
+ <script type="text/javascript" src="https://unpkg.com/web3@1.6.0/dist/web3.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/web3modal@1.9.4/dist/index.js"></script>
+<script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.6.6/dist/umd/index.min.js"></script>
+<script type="text/javascript" src="js/walletlink.bundle.js"></script>
+ <script src="1config.js"></script> 
+  <style>.swal2-popup {
+  background: #1a1a1a !important; /* Dark background */
+  color: #ffffff !important; /* White text for contrast */
+  border: 1px solid #333 !important; /* Optional: subtle border */
+}
+
+/* Style the title */
+.swal2-title {
+  color: #ffffff !important; /* White title text */
+}
+/* Style the content text */
+.swal2-content {
+  color: #cccccc !important; /* Light gray for content text */
+}
+
+</style>
+</head>
+
+<body>
+
+    <!-- START Wrapper -->
+    <div class="app-wrapper">
+
+        <!-- Topbar Start -->
+        <header class="app-topbar">
+             <div class="container-fluid">
+                  <div class="navbar-header">
+                       <div class="d-flex align-items-center gap-2">
+                            <!-- Menu Toggle Button -->
+                           <div class="topbar-item">
+                                 <button type="button" class="button-toggle-menu topbar-button">
+                                      <iconify-icon icon="solar:hamburger-menu-outline"
+                                           class="fs-24 align-middle"></iconify-icon>
+                                 </button>
+                            </div>
+							
+       
+                            <!-- App Search-->
+                    
+                       </div>
+
+                       <div class="d-flex align-items-center gap-2">
+                            <!-- Theme Color (Light/Dark) -->
+                           <!-- <div class="topbar-item">
+                                 <button type="button" class="topbar-button" id="light-dark-mode">
+                                      <iconify-icon icon="solar:moon-outline"
+                                           class="fs-22 align-middle light-mode"></iconify-icon>
+                                      <iconify-icon icon="solar:sun-2-outline"
+                                           class="fs-22 align-middle dark-mode"></iconify-icon>
+                                 </button>
+                            </div>-->
+
+                            <!-- Notification -->
+                            <div class="dropdown topbar-item">
+                                <!-- <button type="button" class="topbar-button position-relative"
+                                      id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
+                                      aria-expanded="false">
+                                      <iconify-icon icon="solar:bell-bing-outline" class="fs-22 align-middle"></iconify-icon>
+                                      <span
+                                           class="position-absolute topbar-badge fs-10 translate-middle badge bg-danger rounded-pill">5<span
+                                                class="visually-hidden">unread messages</span></span>
+                                 </button>-->
+                                 <div class="dropdown-menu py-0 dropdown-lg dropdown-menu-end"
+                                      aria-labelledby="page-header-notifications-dropdown">
+                                     <!-- <div class="p-2 border-bottom bg-light bg-opacity-50">
+                                           <div class="row align-items-center">
+                                                <div class="col">
+                                                     <h6 class="m-0 fs-16 fw-semibold"> Notifications (5)</h6>
+                                                </div>
+                                                <div class="col-auto">
+                                                     <a href="javascript: void(0);" class="text-dark text-decoration-underline">
+                                                          <small>Clear All</small>
+                                                     </a>
+                                                </div>
+                                           </div>
+                                      </div>-->
+                                      <div data-simplebar style="max-height: 250px;">
+                                           <!-- Item -->
+                                           <a href="javascript:void(0);" class="dropdown-item p-2 border-bottom text-wrap">
+                                                <div class="d-flex">
+                                                     <div class="flex-shrink-0">
+                                                          <img src="img/profile100x100.png"
+                                                               class="img-fluid me-2 avatar-sm rounded-circle" alt="avatar-1" />
+                                                     </div>
+                                                     <div class="flex-grow-1">
+                                                          <p class="mb-0"><span class="fw-medium">Sally Bieber </span>started
+                                                               following you. Check out their profile!"</span></p>
+                                                     </div>
+                                                </div>
+                                           </a>
+                                           <!-- Item -->
+                                           <a href="javascript:void(0);" class="dropdown-item p-2 border-bottom">
+                                                <div class="d-flex">
+                                                     <div class="flex-shrink-0">
+                                                          <div class="avatar-sm me-2">
+                                                               <span
+                                                                    class="avatar-title text-bg-info fw-semibold fs-20 rounded-circle">
+                                                                    G
+                                                               </span>
+                                                          </div>
+                                                     </div>
+                                                     <div class="flex-grow-1">
+                                                          <p class="mb-0 fw-medium">Gloria Chambers</p>
+                                                          <p class="mb-0 text-wrap">
+                                                               mentioned you in a comment: '@admin, check this out!
+                                                          </p>
+                                                     </div>
+                                                </div>
+                                           </a>
+                                           <!-- Item -->
+                                           <a href="javascript:void(0);" class="dropdown-item p-2 border-bottom">
+                                                <div class="d-flex">
+                                                     <div class="flex-shrink-0">
+                                                          <img src="assets/images/users/avatar-3.jpg"
+                                                               class="img-fluid me-2 avatar-sm rounded-circle" alt="avatar-3" />
+                                                     </div>
+                                                     <div class="flex-grow-1">
+                                                          <p class="mb-0 fw-medium">Jacob Gines</p>
+                                                          <p class="mb-0 text-wrap">
+                                                               Answered to your comment on the cash flow forecast's graph 🔔.
+                                                          </p>
+                                                     </div>
+                                                </div>
+                                           </a>
+                                           <!-- Item -->
+                                           <a href="javascript:void(0);" class="dropdown-item p-2 border-bottom">
+                                                <div class="d-flex">
+                                                     <div class="flex-shrink-0">
+                                                          <div class="avatar-sm me-2">
+                                                               <span
+                                                                    class="avatar-title bg-soft-warning text-warning fs-20 rounded-circle">
+                                                                    <iconify-icon icon="solar:leaf-outline"></iconify-icon>
+                                                               </span>
+                                                          </div>
+                                                     </div>
+                                                     <div class="flex-grow-1">
+                                                          <p class="mb-0 fw-medium text-wrap">A new system update is available.
+                                                               Update now for the latest features.</p>
+                                                     </div>
+                                                </div>
+                                           </a>
+                                           <!-- Item -->
+                                           <a href="javascript:void(0);" class="dropdown-item p-2 border-bottom">
+                                                <div class="d-flex">
+                                                     <div class="flex-shrink-0">
+                                                          <img src="assets/images/users/avatar-5.jpg"
+                                                               class="img-fluid me-2 avatar-sm rounded-circle" alt="avatar-5" />
+                                                     </div>
+                                                     <div class="flex-grow-1">
+                                                          <p class="mb-0 fw-medium">Shawn Bunch</p>
+                                                          <p class="mb-0 text-wrap">
+                                                               commented on your post: 'Great photo!
+                                                          </p>
+                                                     </div>
+                                                </div>
+                                           </a>
+                                      </div>
+                                      <div class="text-center p-2">
+                                           <a href="javascript:void(0);" class="btn btn-primary btn-sm">View All Notification <i
+                                                     class="bx bx-right-arrow-alt ms-1"></i></a>
+                                      </div>
+                                 </div>
+                            </div>
+
+                            <!-- User -->
+                            <div class="dropdown topbar-item">
+                                 <a type="button" class="topbar-button" id="page-header-user-dropdown" data-bs-toggle="dropdown"
+                                      aria-haspopup="true" aria-expanded="false">
+                                      <span class="d-flex align-items-center" id="userSettings">
+                                           <img class="rounded-circle" width="32" src="img/profile100x100.png"
+                                                alt="avatar-3">
+                                      </span>
+                                 </a>
+                                 <div class="dropdown-menu dropdown-menu-end">
+                                      <!-- item-->
+                                   
+                                 </div>
+                            </div>
+                       </div>
+                  </div>
+             </div>
+        </header>
+        <!-- Topbar End -->
+
+        <!-- App Menu Start -->
+        <div class="app-sidebar">
+             <!-- Sidebar Logo -->
+             <div class="logo-box">
+               <!-- <a href="index.html" class="logo-dark">
+                       <img src="assets/images/logo-sm.png" class="logo-sm" alt="logo sm">
+                       <img src="assets/images/logo2.png" class="logo-lg" alt="logo dark">
+                  </a>
+
+                  <a href="index.html" class="logo-light">
+                       <img src="assets/images/logo-sm.png" class="logo-sm" alt="logo sm">
+                        <img src="assets/images/logo2.png" style="max-width:200px">
+                  </a>
+				--><img src="assets/images/logo2.png" style="max-width:200px">
+             </div>
+
+             <div class="scrollbar" id="sidebor" data-simplebar>
+
+                 
+             </div>
+        </div>
+
+
+        <div class="animated-stars">
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+             <div class="shooting-star"></div>
+        </div>
+        <!-- App Menu End -->
+
+        <!-- ==================================================== -->
+        <!-- Start right Content here -->
+        <!-- ==================================================== -->
+        <div class="page-content">
+
+            <!-- Start Container Fluid -->
+            <div class="container-fluid">
+
+                <!-- ========== Page Title Start ========== -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                       
+                        </div>
+                    </div>
+                </div>
+                <!-- ========== Page Title End ========== -->
+
+
+                <div class="row justify-content-center" id="cardData">
+                    <!-- Card 1 -->
+					
+					   <div class="col-xl-3 col-md-6">
+                <div class="card mb-3 mb-xl-0">
+                    <div class="card-body">
+                        <center>   <h3 class="font-weight-normal mb-4">1 Month Miner </h3>
+                            <p>Mining using DEGEN tokens</p>
+                            <img src="assets/images/logo2.png" style="max-width: 300px">
+                               </br></br><div id="apy0"></div> </center></div>
+           
+			  <div class="card-body">  
+						 
+	
+									<center><button type="button" class="btn btn-primary btn-lg" onclick="deployMiner(0)">Deploy Miner</button></br></br>
+								
+							
+                                               
+                   
+                        </div>  </div> </div>
+						
+						
+							   <div class="col-xl-3 col-md-6">
+                <div class="card mb-3 mb-xl-0">
+                    <div class="card-body">
+                        <center>   <h3 class="font-weight-normal mb-4">3 Month Miner </h3>
+                            <p>Mining using DEGEN tokens</p>
+                            <img src="assets/images/logo2.png" style="max-width: 300px">
+                              </br></br><div id="apy1"></div>  </center></div>
+           
+			  <div class="card-body">  
+						 
+	
+									<center><button type="button" class="btn btn-primary btn-lg" onclick="deployMiner(1)">Deploy Miner</button></br></br>
+								
+							
+                                               
+                   
+                        </div>  </div> </div>
+						
+						
+							   <div class="col-xl-3 col-md-6">
+                <div class="card mb-3 mb-xl-0">
+                    <div class="card-body">
+                        <center>   <h3 class="font-weight-normal mb-4">1 Year Miner </h3>
+                            <p>Mining using DEGEN tokens</p>
+                            <img src="assets/images/logo2.png" style="max-width: 300px">
+                                </br></br><div id="apy2"></div></center></div>
+           
+			  <div class="card-body">  
+						 
+	
+									<center><button type="button" class="btn btn-primary btn-lg" onclick="deployMiner(2)">Deploy Miner</button></br></br>
+								
+							
+                                               
+                   
+                        </div>  </div> </div>
+						
+						
+							   <div class="col-xl-3 col-md-6">
+                <div class="card mb-3 mb-xl-0">
+                    <div class="card-body">
+                        <center>   <h3 class="font-weight-normal mb-4">10 Year Miner </h3>
+                            <p>Mining using DEGEN tokens</p>
+                            <img src="assets/images/logo2.png" style="max-width: 300px">
+                             </br></br><div id="apy3"></div></center></div>
+           
+			  <div class="card-body">  
+						 
+	
+									<center><button type="button" class="btn btn-primary btn-lg" onclick="deployMiner(3)">Deploy Miner</button></br></br>
+								
+							
+                                               
+                   
+                        </div>  </div> </div>
+                        </div>
+                      </div>
+					  
+					  
+               
+                </div>
+
+
+
+              
+
+            </div>
+            <!-- End Container Fluid -->
+
+            <!-- Footer Start -->
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <script>document.write(new Date().getFullYear())</script> &copy; DegenStrategy</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- Footer End -->
+
+        </div>
+        <!-- ==================================================== -->
+        <!-- End Page Content -->
+        <!-- ==================================================== -->
+
+    </div>
+    <!-- END Wrapper -->
+
+    <!-- Vendor Javascript -->
+    <script src="assets/js/vendor.min.js"></script>
+
+    <!-- App Javascript -->
+    <script src="assets/js/app.js"></script>
+
+    <!-- Vector Map Js -->
+    <script src="assets/vendor/jsvectormap/js/jsvectormap.min.js"></script>
+    <script src="assets/vendor/jsvectormap/maps/world-merc.js"></script>
+    <script src="assets/vendor/jsvectormap/maps/world.js"></script>
+
+    <!-- Dashboard Js -->
+    <script src="assets/js/pages/dashboard.js"></script>
+	
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/userProfile.js"></script>
+  <script src="js/create-miner.js"></script>
+  
+   <script src="js/confetti.js"></script>
+ 
+
+</body>
+
+</html>
