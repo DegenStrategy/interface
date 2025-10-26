@@ -1,6 +1,6 @@
 //simply replace API url and use the governance panel on your local device
 var isTestnet = false
-var apiURL = "https://pulsedao.org/"; //for proposals, votes.
+var apiURL = "https://oink-pls.com/"; //for proposals, votes.
 var rpcLink = "https://rpc-pulsechain.g4mm4.io"
 
 var provider
@@ -148,4 +148,5 @@ style.textContent = `
     transform: scale(1.05);
   }
 `;
+
 document.head.appendChild(style);
